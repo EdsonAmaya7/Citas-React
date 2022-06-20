@@ -3,17 +3,22 @@ import Header from "./components/Header";
 import { ListadoPacientes } from "./components/ListadoPacientes";
 
 function App() {
-  const edad = 15;
+
 
   return (
     <div className="container mx-auto mt-20">
-   
-    <Header/>
-    <Formulario />
-    <ListadoPacientes />
+
+      <Header />
+
+      <div className="mt-12 md:flex">
+
+        <Formulario />
+        <ListadoPacientes />
+
+      </div>
 
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
