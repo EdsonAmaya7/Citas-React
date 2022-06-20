@@ -1,9 +1,11 @@
 // rafse
-import React from 'react'
+import { useState, useEffect } from 'react'
 
 const Formulario = () => {
+  
+  const [ nombre, setNombre ] = useState('');
+
   return (
-    
     <div className='md:w-1/2 lg:w-2/5 ml-4'>
 
       <h2 className='font-black text-3xl text-center'>Seguimiento de Pacientes</h2>
@@ -19,6 +21,8 @@ const Formulario = () => {
           <label htmlFor="mascota" className='block text-gray-700 uppercase font-bold'>Nombre Mascota</label>
           <input id='mascota'  type="text" placeholder='Nombre de la Mascota'
           className='border-2 w-full p-2 mt-2 placeholderbg-indigo-400 rounded-md'
+          value={nombre}
+          onChange={ (e) => setNombre(e.target.value) }
           />
         </div>
 
