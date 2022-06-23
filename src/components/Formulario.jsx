@@ -13,8 +13,17 @@ const Formulario = ( { pacientes, setPacientes, paciente } ) => {
 
   const [ error, setError] = useState(false)
 
+  /* este useEffect checa cuando el objeto paciente tiene
+  almenos un registro y si es asi setea los valores
+  en los input del formulario */
   useEffect( () =>{
-    console.log(paciente);
+    if ( Object.keys(paciente).length > 0 ) {
+          setNombre(paciente.nombre)
+          setPropietario(paciente.propietario)
+          setEmail(paciente.email)
+          setFecha(paciente.fecha)
+          setSintomas(paciente.sintomas)
+    }
   }, [paciente] )
 
   
