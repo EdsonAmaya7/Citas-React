@@ -1,6 +1,6 @@
 import Pacientes from "./Pacientes";
 
-export const ListadoPacientes = ({ pacientes, setPaciente }) => {
+export const ListadoPacientes = ({ pacientes, setPaciente, eliminarPaciente }) => {
   return (
     
     <div className="md:w-1/2 lg:w-3/5 ">
@@ -20,6 +20,7 @@ export const ListadoPacientes = ({ pacientes, setPaciente }) => {
               <Pacientes key={paciente.id}
                paciente={paciente}
                setPaciente={setPaciente}
+               eliminarPaciente={eliminarPaciente}
                />
              ))}
         </div>

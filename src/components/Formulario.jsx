@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import Error from './Error';
 
-const Formulario = ( { pacientes, setPacientes, paciente } ) => {
+const Formulario = ( { pacientes, setPacientes, paciente, setPaciente } ) => {
   
 
   const [ nombre, setNombre ] = useState('');
@@ -52,11 +52,29 @@ const Formulario = ( { pacientes, setPacientes, paciente } ) => {
       email,
       fecha,
       sintomas,
-      id: generarId()
+    }
+
+
+    if( paciente.id ){
+      // editando registro
+      objetoPaciente.id = paciente.id
+      console.log(objetoPaciente);
+      console.log(paciente);
+
+      const pacientesActualizados = pacientes.map( pacienteState => 
+        pacienteState.id === paciente.id ? objetoPaciente : pacienteState )
+
+        setPacientes(pacientesActualizados)
+        setPaciente({})
+    }else{
+    // nuevo registro
+    
+    objetoPaciente.id = generarId()
+    setPacientes( [ ...pacientes, objetoPaciente ] )
     }
     // console.log(objetoPaciente);
 
-    setPacientes( [ ...pacientes, objetoPaciente ] )
+    
 
     // console.log('Enviando formulario');
 
@@ -134,7 +152,7 @@ const Formulario = ( { pacientes, setPacientes, paciente } ) => {
       <input type="submit"
       className='bg-indigo-600 w-full p-3 text-white uppercase font-bold
       hover:bg-indigo-800 cursor-pointer transition-all'
-      value="Agregar Paciente"
+      value={ paciente.id ? 'Editar Paciente' : 'Agregar Paciente' }
       />
     </form>
     </div>
